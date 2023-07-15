@@ -11,5 +11,6 @@ internal class OracleCompiledResult : CompiledResult<OracleDataReader>
     {
     }
 
-    public override object ReadFrom(DbDataReader reader) => CompiledResultFactory.Invoke(Unsafe.As<OracleDataReader>(reader));
+    public override object ReadFrom(DbDataReader reader) => 
+        CompiledResultFactory.Invoke(Unsafe.As<OracleDataReader>(reader));
 }

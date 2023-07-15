@@ -7,11 +7,22 @@ using Wkg.EntityFrameworkCore.ProcedureMapping.Compiler.ResultBinding;
 
 namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder.ResultBinding;
 
+/// <summary>
+/// Represents an <see cref="IResultColumnBuilder"/> for a result column of a stored procedure in an Oracle database.
+/// </summary>
 public interface IOracleResultColumnBuilder : IResultColumnBuilder
 {
+    /// <summary>
+    /// The <see cref="global::Oracle.ManagedDataAccess.Client.OracleDbType"/> of the column, if configured.
+    /// </summary>
     OracleDbType? OracleDbType { get; }
 }
 
+/// <summary>
+/// The builder for a result column of stored procedure in an Oracle database.
+/// </summary>
+/// <typeparam name="TResult">The type of the result collection.</typeparam>
+/// <typeparam name="TProperty">The type of the property to be mapped.</typeparam>
 public class OracleResultColumnBuilder<TResult, TProperty>
     : ResultColumnBuilder<TResult, TProperty, OracleResultColumnBuilder<TResult, TProperty>>, IOracleResultColumnBuilder
 {
@@ -25,6 +36,11 @@ public class OracleResultColumnBuilder<TResult, TProperty>
     {
     }
 
+    /// <summary>
+    /// Sets the <see cref="global::Oracle.ManagedDataAccess.Client.OracleDbType"/> of the column.
+    /// </summary>
+    /// <param name="dbType">The <see cref="global::Oracle.ManagedDataAccess.Client.OracleDbType"/> to set.</param>
+    /// <returns>The column builder for fluent configuration.</returns>
     public OracleResultColumnBuilder<TResult, TProperty> HasDbType(OracleDbType dbType)
     {
         if (OracleDbType is not null)
@@ -35,6 +51,7 @@ public class OracleResultColumnBuilder<TResult, TProperty>
         return this;
     }
 
+    /// <inheritdoc/>
     public override OracleResultColumnBuilder<TResult, TProperty> RequiresConversion<TColumn>(Expression<Func<TColumn, TProperty>> conversion)
     {
         ParameterExpression columnExpression = conversion.Parameters[0];
@@ -43,9 +60,11 @@ public class OracleResultColumnBuilder<TResult, TProperty>
         return base.RequiresConversion(conversion);
     }
 
+    /// <inheritdoc/>
     protected override void AttemptAutoConfiguration() =>
         OracleDbType ??= _typeMap.GetDbTypeOrDefault(Context.ResultProperty.PropertyType);
 
+    /// <inheritdoc/>
     protected override void AssertIsValid()
     {
         base.AssertIsValid();
@@ -56,6 +75,7 @@ public class OracleResultColumnBuilder<TResult, TProperty>
     internal void SetCompilerHint(OracleResultColumnCompilerHint hint) => 
         CompilerHint = hint;
 
+    /// <inheritdoc/>
     protected override IResultColumnCompiler Build() =>
         new OracleResultColumnCompiler(this);
 }

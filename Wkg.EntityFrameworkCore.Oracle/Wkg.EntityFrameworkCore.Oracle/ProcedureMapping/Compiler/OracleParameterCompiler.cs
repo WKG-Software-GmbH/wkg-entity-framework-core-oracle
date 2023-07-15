@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder;
+﻿using Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder;
 using Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Compiler.Output;
 using Wkg.EntityFrameworkCore.ProcedureMapping.Compiler;
 

@@ -10,8 +10,18 @@ using Wkg.Extensions.Common;
 
 namespace Wkg.EntityFrameworkCore.Oracle.Extensions;
 
+/// <summary>
+/// Provides extension methods for <see cref="OracleResultColumnBuilder{TResult, TProperty}"/> instances.
+/// </summary>
 public static class OracleResultColumnBuilderExtensions
 {
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="bool"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, bool> GetAsBoolean<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Boolean);
@@ -19,6 +29,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a string and deserialize it as JSON object matching the property type <typeparamref name="TProperty"/> being configured on the <typeparamref name="TResult"/> entity.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, object> GetAsJson<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Json);
@@ -29,6 +46,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="byte"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, byte> GetAsByte<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Byte);
@@ -36,6 +60,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="byte"/> array.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, byte[]> GetAsBytes<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Blob);
@@ -43,6 +74,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="char"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, char> GetAsChar<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Char);
@@ -50,6 +88,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="DateTime"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, DateTime> GetAsDateTime<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Date);
@@ -57,6 +102,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="DateTimeOffset"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, DateTimeOffset> GetAsDateTimeOffset<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.TimeStampTZ);
@@ -64,6 +116,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="decimal"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, decimal> GetAsDecimal<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Decimal);
@@ -71,6 +130,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="double"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, double> GetAsDouble<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Double);
@@ -78,6 +144,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="float"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, float> GetAsFloat<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Single);
@@ -85,6 +158,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="Guid"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, Guid> GetAsGuid<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Raw);
@@ -92,6 +172,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="short"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, short> GetAsInt16<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Int16);
@@ -99,6 +186,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="int"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, int> GetAsInt32<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Int32);
@@ -106,6 +200,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="long"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, long> GetAsInt64<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Int64);
@@ -113,6 +214,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleBFile"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleBFile> GetAsOracleBFile<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Raw);
@@ -120,6 +228,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleBinary"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleBinary> GetAsOracleBinary<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
           builder.HasDbType(OracleDbType.Raw);
@@ -127,6 +242,13 @@ public static class OracleResultColumnBuilderExtensions
           return new(builder);
      }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleBlob"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleBlob> GetAsOracleBlob<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Blob);
@@ -134,6 +256,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleClob"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleClob> GetAsOracleClob<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Clob);
@@ -141,6 +270,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleDate"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleDate> GetAsOracleDate<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Date);
@@ -148,6 +284,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleDecimal"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleDecimal> GetAsOracleDecimal<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Decimal);
@@ -155,6 +298,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleIntervalDS"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleIntervalDS> GetAsOracleIntervalDS<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.IntervalDS);
@@ -162,6 +312,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleIntervalYM"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleIntervalYM> GetAsOracleIntervalYM<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.IntervalYM);
@@ -169,6 +326,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleRef"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleRef> GetAsOracleRef<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Blob);
@@ -176,6 +340,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleString"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleString> GetAsOracleString<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Varchar2);
@@ -183,6 +354,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleTimeStamp"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleTimeStamp> GetAsOracleTimeStamp<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.TimeStamp);
@@ -190,6 +368,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleTimeStampLTZ"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleTimeStampLTZ> GetAsOracleTimeStampLTZ<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.TimeStampLTZ);
@@ -197,6 +382,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleTimeStampTZ"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleTimeStampTZ> GetAsOracleTimeStampTZ<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.TimeStampTZ);
@@ -204,6 +396,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as an <see cref="OracleXmlType"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, OracleXmlType> GetAsOracleXmlType<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.XmlType);
@@ -211,6 +410,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="string"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, string> GetAsString<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.Varchar2);
@@ -218,6 +424,13 @@ public static class OracleResultColumnBuilderExtensions
         return new(builder);
     }
 
+    /// <summary>
+    /// Instructs the compiler to retrieve the column value as a <see cref="TimeSpan"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result entity.</typeparam>
+    /// <typeparam name="TProperty">The type of the property being configured.</typeparam>
+    /// <param name="builder">The builder.</param>
+    /// <returns>The builder instance for fluent configuration.</returns>
     public static OracleResultColumnBuilderProxy<TResult, TProperty, TimeSpan> GetAsTimeSpan<TResult, TProperty>(this OracleResultColumnBuilder<TResult, TProperty> builder)
     {
         builder.HasDbType(OracleDbType.IntervalDS);
