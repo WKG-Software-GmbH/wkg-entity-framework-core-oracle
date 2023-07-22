@@ -67,7 +67,7 @@ public class OracleParameterBuilder<TIOContainer, TParameter>
     {
         base.AssertIsValid();
 
-        _ = OracleDbType ?? Context.ThrowHelper.Throw<ArgumentNullException, OracleDbType>("Attempted to build Parameter with undefined database type. Either no database type was specified or the type could not be inferred from the parameter type.");
+        _ = OracleDbType ?? Context.ThrowHelper.Throw<ArgumentNullException, OracleDbType>("Attempted to build Parameter with undefined database type. Either no database type was specified or the type could not be inferred from the type of the mapped property.");
     }
 
     /// <inheritdoc/>
