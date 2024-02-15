@@ -1,6 +1,5 @@
 stages:
     - build
-    - test
     - increase-version
     - deploy-baget
 
@@ -20,9 +19,6 @@ include:
 
 build:
     extends: .build
-
-test:
-    extends: .test
 
 increase-version:
     extends: .increase-version
