@@ -2,7 +2,6 @@
 using System.Data.Common;
 using System.Data;
 using System.Runtime.CompilerServices;
-using Wkg.Extensions.Common;
 using Wkg.EntityFrameworkCore.ProcedureMapping.Compiler.Output;
 
 namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Compiler.Output;

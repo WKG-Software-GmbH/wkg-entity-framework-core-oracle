@@ -12,6 +12,4 @@ namespace Wkg.EntityFrameworkCore.Oracle.Configuration;
 /// <remarks>
 /// The attribute on its own does not do anything. It must be passed to the <see cref="ModelBuilderExtensions.LoadReflectiveModels{TDatabaseEngineModelAttribute}(ModelBuilder, INamingPolicy?, IMappingPolicy?)"/> method to be effective.
 /// </remarks>
-public sealed class OracleModelAttribute : DatabaseEngineModelAttribute
-{
-}
+public sealed class OracleModelAttribute : DatabaseEngineModelAttribute;

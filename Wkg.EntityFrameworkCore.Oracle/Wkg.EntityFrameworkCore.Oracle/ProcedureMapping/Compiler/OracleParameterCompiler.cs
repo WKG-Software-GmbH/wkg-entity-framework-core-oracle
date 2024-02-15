@@ -4,12 +4,9 @@ using Wkg.EntityFrameworkCore.ProcedureMapping.Compiler;
 
 namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Compiler;
 
-internal class OracleParameterCompiler : ParameterCompiler<IOracleParameterBuilder>, IParameterCompiler<OracleCompiledParameter>
+internal class OracleParameterCompiler(IOracleParameterBuilder parameterBuilder) 
+    : ParameterCompiler<IOracleParameterBuilder>(parameterBuilder), IParameterCompiler<OracleCompiledParameter>
 {
-    public OracleParameterCompiler(IOracleParameterBuilder parameterBuilder) : base(parameterBuilder)
-    {
-    }
-
     public OracleCompiledParameter Compile()
     {
         IOracleParameterBuilder b = Builder;
