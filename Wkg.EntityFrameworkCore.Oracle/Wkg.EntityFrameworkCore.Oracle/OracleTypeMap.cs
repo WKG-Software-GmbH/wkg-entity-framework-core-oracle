@@ -1,11 +1,12 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
+using System.Collections.Frozen;
 
 namespace Wkg.EntityFrameworkCore.Oracle;
 
 internal class OracleTypeMap : DbTypeMap<OracleDbType>
 {
-    protected override Dictionary<Type, OracleDbType> TypeMap { get; } = new Dictionary<Type, OracleDbType>
+    protected override FrozenDictionary<Type, OracleDbType> TypeMap { get; } = FrozenDictionary.ToFrozenDictionary(new Dictionary<Type, OracleDbType>
     {
         { typeof(int), OracleDbType.Int32 },
         { typeof(long), OracleDbType.Int64 },
@@ -45,5 +46,5 @@ internal class OracleTypeMap : DbTypeMap<OracleDbType>
         { typeof(OracleXmlType), OracleDbType.XmlType },
         { typeof(OracleBFile), OracleDbType.BFile },
         { typeof(OracleBlob), OracleDbType.Blob },
-    };
+    });
 }

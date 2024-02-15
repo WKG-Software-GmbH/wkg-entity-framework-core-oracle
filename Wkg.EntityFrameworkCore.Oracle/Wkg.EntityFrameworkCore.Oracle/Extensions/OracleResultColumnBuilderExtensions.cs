@@ -6,7 +6,6 @@ using Wkg.EntityFrameworkCore.Extensions;
 using Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder.ResultBinding;
 using Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Compiler.ResultBinding;
 using Wkg.EntityFrameworkCore.ProcedureMapping.Compiler.ResultConverters;
-using Wkg.Extensions.Common;
 
 namespace Wkg.EntityFrameworkCore.Oracle.Extensions;
 

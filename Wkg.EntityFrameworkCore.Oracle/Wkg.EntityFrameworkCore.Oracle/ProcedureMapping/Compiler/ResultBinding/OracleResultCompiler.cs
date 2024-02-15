@@ -6,12 +6,8 @@ using Wkg.EntityFrameworkCore.ProcedureMapping.Compiler.ResultBinding;
 
 namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Compiler.ResultBinding;
 
-internal class OracleResultCompiler : ResultCompiler<IOracleResultBuilder>, IResultCompiler<OracleDataReader>
+internal class OracleResultCompiler(IOracleResultBuilder builder) : ResultCompiler<IOracleResultBuilder>(builder), IResultCompiler<OracleDataReader>
 {
-    public OracleResultCompiler(IOracleResultBuilder builder) : base(builder)
-    {
-    }
-
     public CompiledResult<OracleDataReader> Compile(CompiledResultColumn[] compiledResultColumns)
     {
         CompiledResultFactory<OracleDataReader> factory = CompileResultFactoryFor<OracleDataReader>(compiledResultColumns);

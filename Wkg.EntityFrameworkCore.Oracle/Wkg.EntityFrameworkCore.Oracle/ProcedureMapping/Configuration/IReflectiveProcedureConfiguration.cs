@@ -10,6 +10,4 @@ namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Configuration;
 /// <typeparam name="TIOContainer">The type of the input/output container used by <typeparamref name="TProcedure"/>.</typeparam>
 public interface IReflectiveProcedureConfiguration<TProcedure, TIOContainer> : IProcedureConfiguration<TProcedure, TIOContainer>
     where TProcedure : OracleStoredProcedure<TIOContainer>, IProcedureConfiguration<TProcedure, TIOContainer>
-    where TIOContainer : class
-{
-}
+    where TIOContainer : class;

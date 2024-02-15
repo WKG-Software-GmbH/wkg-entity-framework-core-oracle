@@ -7,12 +7,9 @@ using Wkg.EntityFrameworkCore.Extensions;
 
 namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Compiler.ResultBinding;
 
-internal class OracleResultColumnCompiler : ResultColumnCompiler<IOracleResultColumnBuilder, OracleDataReader>, IResultColumnCompiler
+internal class OracleResultColumnCompiler(IOracleResultColumnBuilder builder) 
+    : ResultColumnCompiler<IOracleResultColumnBuilder, OracleDataReader>(builder), IResultColumnCompiler
 {
-    public OracleResultColumnCompiler(IOracleResultColumnBuilder builder) : base(builder)
-    {
-    }
-
     protected override Expression? GetColumnConverterOrDefault()
     {
         if (Builder.OracleDbType is OracleDbType.Json or OracleDbType.ObjectAsJson or OracleDbType.ArrayAsJson

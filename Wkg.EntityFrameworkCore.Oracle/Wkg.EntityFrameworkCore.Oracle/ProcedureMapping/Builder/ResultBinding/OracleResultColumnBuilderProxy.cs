@@ -1,6 +1,5 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using Wkg.EntityFrameworkCore.ProcedureMapping.Builder.ResultBinding;
-using Wkg.Extensions.Common;
 
 namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder.ResultBinding;
 
@@ -13,16 +12,14 @@ namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder.ResultBinding;
 /// <typeparam name="TResult">The type of the result entity owning the column being configured.</typeparam>
 /// <typeparam name="TProperty">The type of the property being mapped.</typeparam>
 /// <typeparam name="TColumn">The CLR type of the column being mapped.</typeparam>
-public class OracleResultColumnBuilderProxy<TResult, TProperty, TColumn> : TypedResultColumnBuilderProxy<TResult, TProperty, TColumn, OracleResultColumnBuilder<TResult, TProperty>, OracleResultColumnBuilderProxy<TResult, TProperty, TColumn>>, IOracleResultColumnBuilder
+/// <remarks>
+/// Initializes a new instance of the <see cref="OracleResultColumnBuilderProxy{TResult, TProperty, TColumn}"/> class.
+/// </remarks>
+/// <param name="proxiedBuilder">The proxied builder.</param>
+public class OracleResultColumnBuilderProxy<TResult, TProperty, TColumn>(OracleResultColumnBuilder<TResult, TProperty> proxiedBuilder) 
+    : TypedResultColumnBuilderProxy<TResult, TProperty, TColumn, OracleResultColumnBuilder<TResult, TProperty>, 
+        OracleResultColumnBuilderProxy<TResult, TProperty, TColumn>>(proxiedBuilder), IOracleResultColumnBuilder
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="OracleResultColumnBuilderProxy{TResult, TProperty, TColumn}"/> class.
-    /// </summary>
-    /// <param name="proxiedBuilder">The proxied builder.</param>
-    public OracleResultColumnBuilderProxy(OracleResultColumnBuilder<TResult, TProperty> proxiedBuilder) : base(proxiedBuilder)
-    {
-    }
-
     OracleDbType? IOracleResultColumnBuilder.OracleDbType => ProxiedBuilder.To<IOracleResultColumnBuilder>().OracleDbType;
 
     /// <inheritdoc/>
