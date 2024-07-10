@@ -4,7 +4,8 @@ stages:
   - deploy-baget
 
 variables:
-  PROJECT_FILE_PATH: "Wkg.EntityFrameworkCore.Oracle/Wkg.EntityFrameworkCore.Oracle/Wkg.EntityFrameworkCore.Oracle.csproj"
+  PROJECT_DIRECTORY: "Wkg.EntityFrameworkCore.Oracle/Wkg.EntityFrameworkCore.Oracle"
+  PROJECT_FILE_PATH: "${PROJECT_DIRECTORY}/Wkg.EntityFrameworkCore.Oracle.csproj"
   MAJOR_VERSION: "8"
   MINOR_VERSION: "2"
 
@@ -30,4 +31,6 @@ increase-version:
     - /^diag-.*$/
 
 deploy:
-  extends: .deploy-baget        
+  extends: .deploy-baget
+  variables:
+    DOTNET_CI_VERSION_FILE: "${PROJECT_DIRECTORY}/WkgEntityFrameworkCoreOracle.cs"
