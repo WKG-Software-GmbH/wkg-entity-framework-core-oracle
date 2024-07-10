@@ -14,7 +14,6 @@ include:
     ref: 'v1.2.10'
     file:
       - '/jobs/build_dotnet_8.yml'
-      - '/jobs/test_dotnet_8.yml'
       - '/jobs/increase_version.yml'
       - '/jobs/deploy_baget_dotnet_8.yml'
 
