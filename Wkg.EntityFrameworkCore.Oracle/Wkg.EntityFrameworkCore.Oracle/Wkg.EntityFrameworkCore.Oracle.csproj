@@ -6,9 +6,10 @@
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RestoreAdditionalProjectSources>
-            https://baget.wkg.lan/v3/index.json
-        </RestoreAdditionalProjectSources>
+		<!-- versioning is done by the CI -->
+		<!-- the following placeholders must not be changed -->
+		<VersionPrefix>0.0.0</VersionPrefix>
+		<VersionSuffix>CI-INJECTED</VersionSuffix>
     </PropertyGroup>
 
     <!--Nuget packaging-->
@@ -37,9 +38,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-		<PackageReference Include="Wkg" Version="[8.0.14725,8.1.0)" />
-		<PackageReference Include="Wkg.EntityFrameworkCore" Version="8.0.14815" />
-        <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.130" />
+		<PackageReference Include="Wkg" Version="[8.2.16943,8.3.0)" />
+		<PackageReference Include="Wkg.EntityFrameworkCore" Version="[8.2.17066,8.3.0)" />
+        <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.5.1" />
     </ItemGroup>
 
     <ItemGroup>
