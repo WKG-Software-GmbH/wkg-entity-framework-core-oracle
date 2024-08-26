@@ -26,7 +26,7 @@ public interface IOracleResultColumnBuilder : IResultColumnBuilder
 public class OracleResultColumnBuilder<TResult, TProperty>
     : ResultColumnBuilder<TResult, TProperty, OracleResultColumnBuilder<TResult, TProperty>>, IOracleResultColumnBuilder
 {
-    private static readonly OracleTypeMap _typeMap = new();
+    private static readonly OracleTypeMap s_typeMap = new();
 
     private OracleDbType? OracleDbType { get; set; } = null;
 
@@ -55,14 +55,14 @@ public class OracleResultColumnBuilder<TResult, TProperty>
     public override OracleResultColumnBuilder<TResult, TProperty> RequiresConversion<TColumn>(Expression<Func<TColumn, TProperty>> conversion)
     {
         ParameterExpression columnExpression = conversion.Parameters[0];
-        OracleDbType = _typeMap.GetDbTypeOrDefault(columnExpression.Type);
+        OracleDbType = s_typeMap.GetDbTypeOrDefault(columnExpression.Type);
 
         return base.RequiresConversion(conversion);
     }
 
     /// <inheritdoc/>
     protected override void AttemptAutoConfiguration() =>
-        OracleDbType ??= _typeMap.GetDbTypeOrDefault(Context.ResultProperty.PropertyType);
+        OracleDbType ??= s_typeMap.GetDbTypeOrDefault(Context.ResultProperty.PropertyType);
 
     /// <inheritdoc/>
     protected override void AssertIsValid()

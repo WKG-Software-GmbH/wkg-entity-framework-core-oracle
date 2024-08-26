@@ -34,7 +34,7 @@ public class OracleParameterBuilder<TIOContainer, TParameter>
     IOracleParameterBuilder
     where TIOContainer : class
 {
-    private static readonly OracleTypeMap _typeMap = new();
+    private static readonly OracleTypeMap s_typeMap = new();
 
     private OracleDbType? OracleDbType { get; set; } = null;
 
@@ -47,7 +47,7 @@ public class OracleParameterBuilder<TIOContainer, TParameter>
     /// <param name="throwHelper">The <see cref="IProcedureThrowHelper"/> to be used for throwing exceptions.</param>
     public OracleParameterBuilder(Expression<Func<TIOContainer, TParameter>> parameterSelector, IProcedureThrowHelper throwHelper) : base(parameterSelector, throwHelper)
     {
-        OracleDbType = _typeMap.GetDbTypeOrDefault(Context.PropertyInfo.PropertyType);
+        OracleDbType = s_typeMap.GetDbTypeOrDefault(Context.PropertyInfo.PropertyType);
     }
 
     /// <summary>
