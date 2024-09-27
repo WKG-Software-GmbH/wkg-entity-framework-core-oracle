@@ -1,6 +1,6 @@
 # `Wkg.EntityFrameworkCore.Oracle` Documentation
 
-`Wkg.EntityFrameworkCore.Oracle` only provides the RECAP bindings for Oracle PL/SQL. For more information on how to use the RECAP framework, please refer to the [WKG Entity Framework Core documentation](https://git.wkg.lan/WKG/components/wkg-entity-framework-core/-/blob/main/docs/documentation.md).
+`Wkg.EntityFrameworkCore.Oracle` only provides the RECAP bindings for Oracle PL/SQL. For more information on how to use the RECAP framework, please refer to the [WKG Entity Framework Core documentation](https://github.com/WKG-Software-GmbH/wkg-entity-framework-core/blob/main/docs/documentation.md).
 
 - [`Wkg.EntityFrameworkCore.Oracle` Documentation](#wkgentityframeworkcoreoracle-documentation)
   - [Getting Started](#getting-started)
@@ -9,6 +9,9 @@
   - [Usage](#usage)
     - [Mapping Procedure Command Objects](#mapping-procedure-command-objects)
     - [Features](#features)
+
+> :warning: **Warning**
+> This documentation is a work in progress and may not be complete or up-to-date. For the most accurate and up-to-date information, please refer to the source code and the XML documentation comments.
 
 ## Getting Started
 
@@ -26,11 +29,11 @@ Please refer to the installation instructions provided in the [README](../README
 ## Usage
 
 > :bulb: **Tip**
-> It is recommended to read the [WKG Entity Framework Core documentation](https://git.wkg.lan/WKG/components/wkg-entity-framework-core/-/blob/main/docs/documentation.md) before using the `Wkg.EntityFrameworkCore.Oracle` package.
+> It is recommended to read the [WKG Entity Framework Core documentation](https://github.com/WKG-Software-GmbH/wkg-entity-framework-core/blob/main/docs/documentation.md) before using the `Wkg.EntityFrameworkCore.Oracle` package.
 
 ### Mapping Procedure Command Objects
 
-Mapping RECAP Procedure Command Objects (PCOs) targeting Oracle follows the same pattern described in the [WKG Entity Framework Core documentation](https://git.wkg.lan/WKG/components/wkg-entity-framework-core/-/blob/main/docs/documentation.md#getting-started-with-pco-mapping), however, there are some minor differences to be aware of:
+Mapping RECAP Procedure Command Objects (PCOs) targeting Oracle follows the same pattern described in the [WKG Entity Framework Core documentation](https://github.com/WKG-Software-GmbH/wkg-entity-framework-core/blob/main/docs/documentation.md#getting-started-with-pco-mapping), however, there are some minor differences to be aware of:
 
 - All PCOs targeting Oracle Databases must inherit from the `OracleStoredProcedure<TIOContainer>` or `OracleStoredProcedure<TIOContainer, TResult>` base classes, where `TIOContainer` is the type of the Input/Output Container (I/O Container) used by the PCO.
 - When configuring a PCO, use the `InPackage(string packageName)` method to specify the name of the package containing the procedure. This is required for all PCOs targeting Oracle Databases. The following example demonstrates the usage of the `InPackage()` method:
@@ -82,7 +85,7 @@ The `Wkg.EntityFrameworkCore.Oracle` package provides the following additional f
     ```
 
     > :pray: **Feature Request**
-    > JSON support is also provided by the [WKG Entity Framework Core - MySQL Bindings](https://git.wkg.lan/WKG/components/wkg-entity-framework-core-mysql) package, so it should be investigated whether a common implementation can be extracted to [WKG Entity Framework Core](https://git.wkg.lan/WKG/components/wkg-entity-framework-core). Feel free to open merge requests in the Core repository to implement this feature. :slightly_smiling_face:
+    > JSON support is also provided by the [WKG Entity Framework Core - MySQL Bindings](https://github.com/WKG-Software-GmbH/wkg-entity-framework-core-mysql) package, so it should be investigated whether a common implementation can be extracted to [WKG Entity Framework Core](https://github.com/WKG-Software-GmbH/wkg-entity-framework-core). Feel free to open merge requests in the Core repository to implement this feature. :slightly_smiling_face:
     
 - **Support for Oracle datatypes** - The `OracleResultColumnBuilderExtensions` class provides exhaustive support for Oracle datatypes including `OracleTimeStamp`, `OracleClob`, and other types. PCOs can map these datatypes to parameters as usual via the `HasDbType()` method.
 - **Conditional Entity Discovery** - If you are using multiple database providers in the same project, you can decorate `IReflectiveModelConfiguration<>` implementations with the `OracleModelAttribute` to restrict entity discovery to Oracle only. Subsequently pass the attribute type to the `LoadReflectiveModels<T>()` method:
