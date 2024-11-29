@@ -12,17 +12,6 @@ namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder;
 /// <summary>
 /// Provides a simple API for configuring a parameter of a stored procedure in an Oracle database.
 /// </summary>
-internal interface IOracleParameterBuilder : IParameterBuilder
-{
-    /// <summary>
-    /// The <see cref="global::Oracle.ManagedDataAccess.Client.OracleDbType"/> associated with the parameter of this Oracle procedure.
-    /// </summary>
-    OracleDbType? OracleDbType { get; }
-}
-
-/// <summary>
-/// Provides a simple API for configuring a parameter of a stored procedure in an Oracle database.
-/// </summary>
 /// <typeparam name="TIOContainer">The type of the Input/Output container object used to pass arguments to and from the stored procedure.</typeparam>
 /// <typeparam name="TParameter">The CLR type of the parameter being mapped.</typeparam>
 public class OracleParameterBuilder<TIOContainer, TParameter>

@@ -8,11 +8,6 @@ using Wkg.EntityFrameworkCore.ProcedureMapping.Compiler.ResultBinding;
 namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder.ResultBinding;
 
 /// <summary>
-/// Represents an <see cref="IResultBuilder"/> for result entities of a stored procedure in an Oracle database.
-/// </summary>
-public interface IOracleResultBuilder : IResultBuilder;
-
-/// <summary>
 /// The result entity builder for result type <typeparamref name="TResult"/> of a stored procedure in an Oracle database.
 /// </summary>
 /// <typeparam name="TResult">The type of the result collection.</typeparam>

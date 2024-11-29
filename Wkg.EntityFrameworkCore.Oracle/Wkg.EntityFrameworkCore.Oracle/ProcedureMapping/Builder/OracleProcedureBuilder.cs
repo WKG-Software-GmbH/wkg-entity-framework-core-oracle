@@ -12,14 +12,6 @@ namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder;
 /// <summary>
 /// Provides a simple API for configuring a stored procedure in an Oracle database.
 /// </summary>
-internal interface IOracleProcedureBuilder : IProcedureBuilder
-{
-    string? PackageName { get; }
-}
-
-/// <summary>
-/// Provides a simple API for configuring a stored procedure in an Oracle database.
-/// </summary>
 /// <typeparam name="TProcedure">The concrete type of the stored procedure command object that represents the stored database procedure.</typeparam>
 /// <typeparam name="TIOContainer">The type of the Input/Output container object used to pass arguments to and from the stored procedure.</typeparam>
 public class OracleProcedureBuilder<TProcedure, TIOContainer>

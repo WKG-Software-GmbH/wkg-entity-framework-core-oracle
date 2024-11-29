@@ -2,8 +2,8 @@
 
     <!--.NET build settings-->
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <LangVersion>latest</LangVersion>
+        <TargetFramework>net9.0</TargetFramework>
+        <LangVersion>13</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <!-- versioning is done by the CI -->
@@ -22,7 +22,7 @@
         <PackageProjectUrl>https://github.com/WKG-Software-GmbH/wkg-entity-framework-core-oracle</PackageProjectUrl>
         <Description>Wkg.EntityFrameworkCore.Oracle provides RECAP bindings for Oracle PL/SQL, enabling procedure mapping support in the RECAP framework for Oracle databases. Requires Wkg.EntityFrameworkCore.</Description>
         <Company>WKG Software GmbH</Company>
-        <Authors>WKG Software GmbH</Authors>
+        <Authors>WKG Software GmbH,Frederik Höft</Authors>
         <Copyright>Copyright (c) WKG Software GmbH 2024</Copyright>
         <PackageIcon>logo.png</PackageIcon>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -41,9 +41,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Wkg" Version="[8.2.17550,8.3)" />
-        <PackageReference Include="Wkg.EntityFrameworkCore" Version="[8.2.17555,8.3.0)" />
-        <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="[23.5.1,23.6.0)" />
+		<PackageReference Include="Wkg" Version="[9.0.17748,9.1)" />
+		<PackageReference Include="Wkg.EntityFrameworkCore" Version="[9.0.17812,9.1)" />
+        <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="[23.6.1,23.7)" />
     </ItemGroup>
 
     <ItemGroup>
