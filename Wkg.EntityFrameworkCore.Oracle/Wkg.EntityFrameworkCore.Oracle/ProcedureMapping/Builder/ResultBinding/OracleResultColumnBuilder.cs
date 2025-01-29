@@ -8,17 +8,6 @@ using Wkg.EntityFrameworkCore.ProcedureMapping.Compiler.ResultBinding;
 namespace Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder.ResultBinding;
 
 /// <summary>
-/// Represents an <see cref="IResultColumnBuilder"/> for a result column of a stored procedure in an Oracle database.
-/// </summary>
-public interface IOracleResultColumnBuilder : IResultColumnBuilder
-{
-    /// <summary>
-    /// The <see cref="global::Oracle.ManagedDataAccess.Client.OracleDbType"/> of the column, if configured.
-    /// </summary>
-    OracleDbType? OracleDbType { get; }
-}
-
-/// <summary>
 /// The builder for a result column of stored procedure in an Oracle database.
 /// </summary>
 /// <typeparam name="TResult">The type of the result collection.</typeparam>
@@ -32,9 +21,8 @@ public class OracleResultColumnBuilder<TResult, TProperty>
 
     OracleDbType? IOracleResultColumnBuilder.OracleDbType => OracleDbType;
 
-    internal OracleResultColumnBuilder(Expression<Func<TResult, TProperty>> columnSelector, IResultThrowHelper throwHelper) : base(columnSelector, throwHelper)
-    {
-    }
+    internal OracleResultColumnBuilder(Expression<Func<TResult, TProperty>> columnSelector, IResultThrowHelper throwHelper) 
+        : base(columnSelector, throwHelper) => Pass();
 
     /// <summary>
     /// Sets the <see cref="global::Oracle.ManagedDataAccess.Client.OracleDbType"/> of the column.
@@ -61,8 +49,15 @@ public class OracleResultColumnBuilder<TResult, TProperty>
     }
 
     /// <inheritdoc/>
-    protected override void AttemptAutoConfiguration() =>
-        OracleDbType ??= s_typeMap.GetDbTypeOrDefault(Context.ResultProperty.PropertyType);
+    protected override void AttemptAutoConfiguration()
+    {
+        if (OracleDbType is null)
+        {
+            Context.ThrowHelper.Warn(
+                "No DB Type was specified for the column. Attempting to infer the DB Type from the property type. To reduce the risk of bugs and to remove this warning, specify the DB Type of the column explicitly.");
+            OracleDbType = s_typeMap.GetDbTypeOrDefault(Context.ResultProperty.PropertyType);
+        }
+    }
 
     /// <inheritdoc/>
     protected override void AssertIsValid()
