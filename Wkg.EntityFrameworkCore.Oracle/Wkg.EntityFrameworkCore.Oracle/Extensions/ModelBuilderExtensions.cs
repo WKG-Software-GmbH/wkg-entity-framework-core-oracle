@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Wkg.EntityFrameworkCore.Configuration.Discovery;
 using Wkg.EntityFrameworkCore.Configuration.Reflection.Discovery;
 using Wkg.EntityFrameworkCore.Oracle.ProcedureMapping;
 using Wkg.EntityFrameworkCore.Oracle.ProcedureMapping.Builder;
@@ -46,33 +47,18 @@ public static class ModelBuilderExtensions
     /// Reflectively loads and configures all stored procedures implementing <see cref="IOracleStoredProcedure{TIOContainer}"/> and <see cref="IReflectiveProcedureConfiguration{TProcedure, TIOContainer}"/> from the calling assembly.
     /// </summary>
     /// <param name="builder">The <see cref="ModelBuilder"/> to use.</param>
-    /// <returns>The <see cref="ModelBuilder"/> instance.</returns>
-    /// <exception cref="ArgumentNullException">if <paramref name="builder"/> is <see langword="null"/>.</exception>
-    public static ModelBuilder LoadReflectiveProcedures(this ModelBuilder builder)
-    {
-        _ = builder ?? throw new ArgumentNullException(nameof(builder));
-        ReflectiveProcedureConfigurationLoader.LoadAll(builder, null);
-        return builder;
-    }
-
-    /// <summary>
-    /// Reflectively loads and configures all stored procedures implementing <see cref="IOracleStoredProcedure{TIOContainer}"/> and <see cref="IReflectiveProcedureConfiguration{TProcedure, TIOContainer}"/> from the calling assembly.
-    /// </summary>
-    /// <param name="builder">The <see cref="ModelBuilder"/> to use.</param>
     /// <param name="configureOptions">The action to configure the options for the reflective procedure discovery.</param>
     /// <returns>The <see cref="ModelBuilder"/> instance.</returns>
     /// <exception cref="ArgumentNullException">if <paramref name="builder"/> is <see langword="null"/>.</exception>
     public static ModelBuilder LoadReflectiveProcedures(this ModelBuilder builder, Action<IDiscoveryOptionsBuilder>? configureOptions = null)
     {
         _ = builder ?? throw new ArgumentNullException(nameof(builder));
-        Assembly[]? assemblies = null;
-        if (configureOptions is not null)
-        {
-            OracleDiscoveryOptionsBuilder optionsBuilder = new();
-            configureOptions(optionsBuilder);
-            assemblies = optionsBuilder.Build().TargetAssemblies;
-        }
-        ReflectiveProcedureConfigurationLoader.LoadAll(builder, assemblies);
+        OracleDiscoveryOptionsBuilder optionsBuilder = new();
+        configureOptions?.Invoke(optionsBuilder);
+        DiscoveryOptions discoveryOptions = optionsBuilder.Build();
+        IReflectiveProcedureDiscoveryContext discoveryContext = new OracleProcedureDiscoveryContext();
+        discoveryContext.AddLoader(new OracleReflectiveProcedureLoader());
+        discoveryContext.Discover(builder, discoveryOptions);
         return builder;
     }
 }
